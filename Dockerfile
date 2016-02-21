@@ -1,8 +1,7 @@
-FROM perl:5.22
+FROM rapi/rapidapp-base:1.1005
 MAINTAINER Henry Van Styn <vanstyn@cpan.org>
 
-RUN cpanm --notest \
- RapidApp \
+RUN cpanm \
  Gazelle \
  DBD::mysql DBD::Pg \
 && rm -rf .cpanm/
