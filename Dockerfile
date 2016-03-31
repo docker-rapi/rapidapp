@@ -8,16 +8,21 @@ MAINTAINER Henry Van Styn <vanstyn@cpan.org>
 #  * PostgreSQL
 #  * Microsoft SQL Server
 #
+# system packages : unixodbc-dev tdsodbc (for MSSQL)
+# CPAN modules    : DBD::mysql DBD::Pg DBD::ODBC
 
-# -- ODBC/TDS drivers needed for MSSQL:
+
+# Install misc system packages needed to support common modules
 RUN apt-get update && apt-get install -y \
   unixodbc-dev tdsodbc \
+  libgd-dev \
 && rm -fr /var/lib/apt/lists/*
 
 COPY etc/odbcinst.ini /etc/
-# --
 
+# Install common/useful CPAN modules:
 RUN cpanm \
  Gazelle \
  DBD::mysql DBD::Pg DBD::ODBC \
+ Image::Resize \
 && rm -rf .cpanm/
