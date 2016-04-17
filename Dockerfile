@@ -1,4 +1,4 @@
-FROM rapi/rapidapp-base:1.1007
+FROM rapi/rapidapp-base:1.1008
 MAINTAINER Henry Van Styn <vanstyn@cpan.org>
 
 # Install drivers and packages needed to access the 3 main
@@ -20,9 +20,15 @@ RUN apt-get update && apt-get install -y \
 
 COPY etc/odbcinst.ini /etc/
 
+# This is a dep module of the following which randomly fails due
+# to issues with lack of interactive terminal, install it with
+# no tests:
+RUN cpanm -n Parallel::Prefork && rm -rf .cpanm/
+
 # Install common/useful CPAN modules:
 RUN cpanm \
  Gazelle \
  DBD::mysql DBD::Pg DBD::ODBC \
  Image::Resize \
+ Devel::Confess \
 && rm -rf .cpanm/
