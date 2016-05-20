@@ -16,6 +16,7 @@ MAINTAINER Henry Van Styn <vanstyn@cpan.org>
 RUN apt-get update && apt-get install -y \
   unixodbc-dev tdsodbc \
   libgd-dev \
+  sqlite \
 && rm -fr /var/lib/apt/lists/*
 
 COPY etc/odbcinst.ini /etc/
