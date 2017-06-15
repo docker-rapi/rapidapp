@@ -1,4 +1,4 @@
-FROM rapi/rapidapp-base:1.2100
+FROM rapi/rapidapp-base:1.3000
 MAINTAINER Henry Van Styn <vanstyn@cpan.org>
 
 # Install drivers and packages needed to access the 3 main
@@ -32,4 +32,6 @@ RUN cpanm \
  DBD::mysql DBD::Pg DBD::ODBC \
  Image::Resize \
  Devel::Confess \
+ YAML::XS \
+ DBIx::Class::Helpers \
 && rm -rf .cpanm/
