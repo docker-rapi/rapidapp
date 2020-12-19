@@ -1,4 +1,4 @@
-FROM rapi/rapidapp-base:1.3302
+FROM rapi/rapidapp-base:1.3400
 MAINTAINER Henry Van Styn <vanstyn@cpan.org>
 
 # Install drivers and packages needed to access the 3 main
